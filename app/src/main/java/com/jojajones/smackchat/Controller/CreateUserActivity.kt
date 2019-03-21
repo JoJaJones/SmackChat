@@ -1,10 +1,12 @@
-package com.jojajones.smackchat
+package com.jojajones.smackchat.Controller
 
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import com.jojajones.smackchat.R
+import com.jojajones.smackchat.Services.AuthService
 import kotlinx.android.synthetic.main.activity_create_user.*
 import kotlin.random.Random
 
@@ -42,5 +44,23 @@ class CreateUserActivity : AppCompatActivity() {
 
     fun createUserBtnClicked(view: View){
 
+        val email = createUserEmail.text.toString()
+        val password = createUserPassword.text.toString()
+        val name = createUserUserName.text.toString()
+
+        AuthService.registerUser(this, email, password){ registerSuccess ->
+            if(registerSuccess){
+                AuthService.loginUser(this, email, password){ loginSuccess ->
+                    if(loginSuccess){
+                        AuthService.createUser(this, name, email, bgColor, userAvatar){ created ->
+                            if(created){
+                                finish()
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }
