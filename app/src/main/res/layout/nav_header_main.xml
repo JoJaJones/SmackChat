@@ -33,11 +33,10 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nav_header_subtitle"
             android:id="@+id/userEmailNavHeader"
             app:layout_constraintStart_toStartOf="@+id/userNameNavHeader"
             android:textColor="#ffffff"
-            app:layout_constraintTop_toBottomOf="@+id/userNameNavHeader"/>
+            app:layout_constraintTop_toBottomOf="@+id/userNameNavHeader" tools:text="@string/nav_header_subtitle"/>
     <Button
             android:text="@string/login"
             android:layout_width="0dp"

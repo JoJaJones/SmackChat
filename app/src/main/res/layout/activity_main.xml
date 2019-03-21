@@ -28,7 +28,7 @@
             <ListView android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:layout_below="@+id/nav_drawer_header_include"
-                      android:id="@+id/channel_list"/>
+                      android:id="@+id/channelList"/>
         </RelativeLayout>
     </android.support.design.widget.NavigationView>
 

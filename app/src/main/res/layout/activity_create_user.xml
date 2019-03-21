@@ -71,4 +71,13 @@
             app:layout_constraintStart_toStartOf="@+id/createUserAvatarBgGenBtn"
             app:layout_constraintEnd_toEndOf="@+id/createUserAvatarBgGenBtn" android:clickable="true"
             android:onClick="createUserAvatarClicked" android:contentDescription="@string/user_avatar"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/createUserSpinner"
+            app:layout_constraintEnd_toEndOf="@+id/createUserAvatar"
+            app:layout_constraintStart_toStartOf="@+id/createUserAvatar"
+            app:layout_constraintTop_toTopOf="@+id/createUserAvatar"
+            app:layout_constraintBottom_toBottomOf="@+id/createUserAvatar"/>
 </android.support.constraint.ConstraintLayout>
