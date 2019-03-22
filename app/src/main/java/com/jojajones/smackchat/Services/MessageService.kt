@@ -55,6 +55,7 @@ object MessageService {
     }
 
     fun getMessages(context: Context, channelId: String, complete: (Boolean) -> Unit){
+        messages = ArrayList()
         val getMessageData = object: JsonArrayRequest(Method.GET, "$URL_GETMESSAGES$channelId", null, Response.Listener { messageList ->
             try {
                 for(x in 0 until messageList.length()){

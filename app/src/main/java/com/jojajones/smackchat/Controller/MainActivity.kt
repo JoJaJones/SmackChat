@@ -125,7 +125,6 @@ class MainActivity : AppCompatActivity() {
     fun updateWithChannel(context: Context){
         if(selectedChannel != null){
             mainText.text = selectedChannel.toString()
-            MessageService.messages = ArrayList()
             MessageService.getMessages(context, selectedChannel?.id!!) {
                 if (it) {
                     messageAdapter.notifyDataSetChanged()
@@ -207,18 +206,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val onNewChannel = Emitter.Listener { args ->
-        runOnUiThread {
-            MessageService.addChannel(args[0] as String, args[1] as String, args[2] as String)
-            channelAdapter.notifyDataSetChanged()
+        if(App.sharedPreferences.isLoggedIn) {
+            runOnUiThread {
+                MessageService.addChannel(args[0] as String, args[1] as String, args[2] as String)
+                channelAdapter.notifyDataSetChanged()
+            }
         }
     }
 
     private val onNewMessage = Emitter.Listener { args ->
-        runOnUiThread {
-            MessageService.addMessage(args[0] as String, args[1] as String, args[2] as String, args[3] as String,
-                args[4] as String, args[5] as String, args[6] as String, args[7] as String )
-            messageAdapter.notifyDataSetChanged()
+        if(App.sharedPreferences.isLoggedIn){
+            runOnUiThread {
+                if(args[2] as String == selectedChannel?.id) {
+                    MessageService.addMessage(
+                        args[0] as String, args[1] as String, args[2] as String, args[3] as String,
+                        args[4] as String, args[5] as String, args[6] as String, args[7] as String
+                    )
+                    messageAdapter.notifyDataSetChanged()
+                }
+            }
         }
+
     }
 
     fun sendMessageBtnClicked(view: View){
