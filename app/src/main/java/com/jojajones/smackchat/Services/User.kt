@@ -1,18 +1,16 @@
 package com.jojajones.smackchat.Services
 
 import android.graphics.Color
+import com.jojajones.smackchat.Controller.App
 import java.util.*
 
 object User{
     var name = ""
-    var email = ""
     var avatarIcon =""
     var avatarColor = ""
-    var token = ""
     var id = ""
-    var isLoggedIn = false
 
-    fun getBgColor(): Int{
+    fun getBgColor(avatarColor: String): Int{
         val processedColors = avatarColor
             .replace("[","")
             .replace("]", "")
@@ -32,12 +30,12 @@ object User{
 
     fun logout(){
         name = ""
-        email = ""
         avatarIcon = ""
         avatarColor = ""
-        token = ""
         id = ""
-        isLoggedIn = false
+        App.sharedPreferences.isLoggedIn = false
+        App.sharedPreferences.userEmail = ""
+        App.sharedPreferences.authToken = ""
 
 
     }

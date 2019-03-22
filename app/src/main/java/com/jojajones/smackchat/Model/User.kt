@@ -2,7 +2,6 @@ package com.jojajones.smackchat.Model
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.widget.ImageView
 
 class User(var name: String? = "", var email: String? = "", var password: String? = "", var token: String? = "", var avatarBg: String? = "", var avatarIcon: String? = "" ): Parcelable{
 

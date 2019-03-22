@@ -1,13 +1,16 @@
 package com.jojajones.smackchat.Utils
 
 const val URL_BASE = "https://planet-flaming-unicorn-smack.herokuapp.com/v1/"
+
 const val URL_REGISTER =  "${URL_BASE}account/register"
 const val URL_ADDUSER =  "${URL_BASE}user/add"
 const val URL_LOGINUSER = "${URL_BASE}account/login"
 const val URL_FINDBYEMAIL = "${URL_BASE}user/byEmail/"
-const val SOCKET_URL = "https://planet-flaming-unicorn-smack.herokuapp.com/"
 const val URL_GETCHANNELS = "${URL_BASE}channel"
+const val URL_UPDATEUSER = "${URL_BASE}user/"
+const val URL_GETMESSAGES = "${URL_BASE}message/byChannel/"
 
+const val SOCKET_URL = "https://planet-flaming-unicorn-smack.herokuapp.com/"
 
 const val EMAIL = "email"
 const val PASSWORD = "password"

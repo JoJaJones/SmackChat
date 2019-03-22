@@ -3,17 +3,13 @@ package com.jojajones.smackchat.Controller
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.jojajones.smackchat.R
 import com.jojajones.smackchat.Services.AuthService
 import com.jojajones.smackchat.Services.MessageService
-import com.jojajones.smackchat.Services.User
-import com.jojajones.smackchat.Utils.BROADCAST_USER_DATA_CHANGE
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -25,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        if(User.token != ""){
+        if(App.sharedPreferences.authToken != ""){
             finish()
         }
         super.onResume()
@@ -36,24 +32,12 @@ class LoginActivity : AppCompatActivity() {
         if(loginScreenEmail.text.isNotEmpty() && loginScreenPassword.text.isNotEmpty()) {
             enableSpinner(true)
             AuthService.loginUser(
-                this,
                 loginScreenEmail.text.toString(),
                 loginScreenPassword.text.toString()
             ) { complete ->
                 if (complete) {
                     AuthService.getUserProfile(this) { userUpdated ->
                         if (userUpdated) {
-                            MessageService.getChannels(this){acquiredChannels ->
-                                if(acquiredChannels){
-
-                                }else{
-                                    errorToast("Unable to retrieve channels")
-                                }
-                            }
-
-                            val userDataChange = Intent(BROADCAST_USER_DATA_CHANGE)
-
-                            LocalBroadcastManager.getInstance(this).sendBroadcast(userDataChange)
                             enableSpinner(false)
                             finish()
                         } else {

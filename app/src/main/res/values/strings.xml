@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SmackChat</string>
+    <string name="app_name">Smack Chat</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -20,4 +20,6 @@
     <string name="tap_to_generate_user_avatar">Tap to generate user avatar</string>
     <string name="user_avatar">user avatar</string>
     <string name="send_message_button">send message button</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
 </resources>
